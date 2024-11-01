@@ -55,8 +55,19 @@ def bbq_tap(query_id ,taps):
         'game': encode_event(id,taps),
     }
     r = requests.post('https://bbqbackcs.bbqcoin.ai/api/coin/earnmoney', headers=headers, data=data)
-    return (r.text)
-
+    return (r.json())
+def bbq_pph(query_id):
+    headers['user-agent'] = generate_user_agent('android')
+    headers['use-agen'] = query_id
+    id = str(json.loads(parse_qs(query_id)['user'][0])['id'])
+    for i in range(17):
+        data = {
+            'truck_id': str(i),
+            'id_user': id,
+        }
+        response = requests.post('https://bbqbackcs.bbqcoin.ai/api/truck/truckupgrade', headers=headers, data=data)
+        return response.json()
+        
 def create_gradient_banner(text):
     banner = pyfiglet.figlet_format(text).splitlines()
     colors = [Fore.GREEN + Style.BRIGHT, Fore.YELLOW + Style.BRIGHT, Fore.RED + Style.BRIGHT]
@@ -96,11 +107,26 @@ if __name__ == "__main__":
     
     print_info_box(social_media_usernames)
     user_input = input("\nEnter BBQ query ID : ")
-    energy = input("Enter your energy value(try 30000 if you are lucky) : ")
+    energy = input("Enter your energy value * 2 : ")
+    mode = input('Enter 1 for Tap tap or 2 for Profit per hour : ')
     while True:
-        data = bbq_tap(user_input,energy)
-        time.sleep(0.5)
-        try :
-            print(Fore.GREEN + Style.BRIGHT + data)
-        except:
-            print(Fore.RED + Style.BRIGHT + data)
+        if mode == '1':
+            data = bbq_tap(user_input,energy)
+            time.sleep(0.5)
+            try :
+                if data['code']==1:
+                    print(Fore.GREEN + Style.BRIGHT + str(data))
+                else :
+                    print(Fore.RED + Style.BRIGHT + str(data))
+            except Exception as e :
+                print('something went wrong',e)
+        elif mode == '2':
+            data = bbq_pph(user_input)
+            if data['code']==1:
+                print(Fore.GREEN + Style.BRIGHT + str((json.loads(data['data']['truck_level'])[str(i)])))
+            else :
+                print(Fore.RED + Style.BRIGHT + str(data))
+        else :
+            os.system('cls' if os.name == 'nt' else 'clear')
+            os.system('python3 main.py')
+            
