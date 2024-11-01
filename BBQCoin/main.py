@@ -56,17 +56,16 @@ def bbq_tap(query_id ,taps):
     }
     r = requests.post('https://bbqbackcs.bbqcoin.ai/api/coin/earnmoney', headers=headers, data=data)
     return (r.json())
-def bbq_pph(query_id):
+def bbq_pph(query_id,task_id):
     headers['user-agent'] = generate_user_agent('android')
     headers['use-agen'] = query_id
     id = str(json.loads(parse_qs(query_id)['user'][0])['id'])
-    for i in range(17):
-        data = {
-            'truck_id': str(i),
-            'id_user': id,
-        }
-        response = requests.post('https://bbqbackcs.bbqcoin.ai/api/truck/truckupgrade', headers=headers, data=data)
-        return response.json()
+    data = {
+        'truck_id': str(task_id),
+        'id_user': id,
+    }
+    response = requests.post('https://bbqbackcs.bbqcoin.ai/api/truck/truckupgrade', headers=headers, data=data)
+    return response.json()
         
 def create_gradient_banner(text):
     banner = pyfiglet.figlet_format(text).splitlines()
@@ -121,11 +120,12 @@ if __name__ == "__main__":
             except Exception as e :
                 print('something went wrong',e)
         elif mode == '2':
-            data = bbq_pph(user_input)
-            if data['code']==1:
-                print(Fore.GREEN + Style.BRIGHT + str((json.loads(data['data']['truck_level'])[str(i)])))
-            else :
-                print(Fore.RED + Style.BRIGHT + str(data))
+            for i in range(1,17):
+                data = bbq_pph(user_input,i)
+                if data['code']==1:
+                    print(Fore.GREEN + Style.BRIGHT + str((json.loads(data['data']['truck_level'])[str(i)])))
+                else :
+                    print(Fore.RED + Style.BRIGHT + str(data))
         else :
             os.system('cls' if os.name == 'nt' else 'clear')
             os.system('python3 main.py')
