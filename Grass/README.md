@@ -1,15 +1,15 @@
 #### Node Pay Grass Ping Pong script 
 
-```bash
+```zsh
 git clone https://github.com/Elphador/Reverse-Engineered-Airdrops.git
 ```
 ```zsh
 cd /Reverse-Engineered-Airdrops/Grass
 ```
-``` python
+```zsh
 pip install -r r.txt
 ```
-```
+```zsh
 python3 main.py
 ```
 ###### if you are tired of email and password prompt add your email and password in in the credits file in this format EMAIL|PASSWORD 
