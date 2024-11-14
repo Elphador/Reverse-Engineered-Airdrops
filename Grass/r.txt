@@ -1,0 +1,6 @@
+loguru
+websockets
+requests
+pyfiglet
+colorama
+fake-useragent
