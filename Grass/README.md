@@ -4,7 +4,7 @@
 git clone https://github.com/Elphador/Reverse-Engineered-Airdrops.git
 ```
 ```zsh
-cd /Reverse-Engineered-Airdrops/Grass
+cd Reverse-Engineered-Airdrops/Grass
 ```
 ```zsh
 pip install -r r.txt
