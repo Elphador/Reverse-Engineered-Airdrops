@@ -1,4 +1,11 @@
 #### Node Pay Grass Ping Pong script 
+
+``` bash
+git clone https://github.com/Elphador/Reverse-Engineered-Airdrops.git
+```
+```
+cd /Reverse-Engineered-Airdrops/Grass
+```
 ```
 pip install -r r.txt
 ```
