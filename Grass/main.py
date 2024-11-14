@@ -114,7 +114,7 @@ async def main():
     print_info_box(social_media_usernames)
     with open('credits.txt', 'r') as file:
             credit = file.read()
-    if credit is not None :
+    if '|' in credit :
         email , password = credit.split('|') 
     else:
         email = input("\nEnter your Grass Email : ")
