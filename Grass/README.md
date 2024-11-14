@@ -3,10 +3,10 @@
 ``` bash
 git clone https://github.com/Elphador/Reverse-Engineered-Airdrops.git
 ```
-```
+```python
 cd /Reverse-Engineered-Airdrops/Grass
 ```
-```
+``` python
 pip install -r r.txt
 ```
 ```
