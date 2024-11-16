@@ -49,7 +49,7 @@ def mine_bums(cred):
     logger.info(response.json())
     
 if __name__ == '__main__':  
-    query = input('Enter your Jump N Jump game session : ')
+    query = input('Enter your Bums  session link : ')
     re = genToken(query)
     while True:    
         mine_bums(re)
