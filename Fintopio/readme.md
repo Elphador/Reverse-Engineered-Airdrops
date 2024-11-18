@@ -1,0 +1,4 @@
+loguru
+requests
+pyfiglet
+colorama
