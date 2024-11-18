@@ -43,7 +43,7 @@ def doCN(jwt,key):
         data = {'jwt':jwt,'key':key}
         response = requests.get('http://77.37.63.209:4000/fin', json=data)
         logger.info(response.json())
-        rest =random.randint(1,10)
+        rest =random.randint(1,20)
         logger.debug(f'[sleeping for : {rest} sec]')
         sleep(rest)
         
